@@ -22,7 +22,7 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 3.5.0.beta2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
