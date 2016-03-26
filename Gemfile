@@ -24,6 +24,7 @@ group :development do
 end
 
 group :test do
+  gem 'factory_girl_rails'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec-rails', '~> 3.5.0.beta2'
 end
