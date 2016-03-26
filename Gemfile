@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'health_check'
+
 # Use Puma as the app server
 gem 'puma'
 
