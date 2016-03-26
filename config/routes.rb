@@ -3,4 +3,12 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
+
+  namespace :v1 do
+    if Rails.env.test?
+      namespace :test do
+        resources :users, only: :index
+      end
+    end
+  end
 end

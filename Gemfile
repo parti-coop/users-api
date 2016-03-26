@@ -22,6 +22,7 @@ group :development do
 end
 
 group :test do
+  gem 'rack-test', require: 'rack/test'
   gem 'rspec-rails', '~> 3.5.0.beta2'
 end
 
