@@ -28,9 +28,13 @@ group :development do
 end
 
 group :test do
+  gem 'email_spec'
   gem 'factory_girl_rails'
+  gem 'json_spec', '~> 1.1.4'
   gem 'rack-test', require: 'rack/test'
+  gem 'rspec', '~> 3.5.0.beta2'
   gem 'rspec-rails', '~> 3.5.0.beta2'
+  gem 'timecop'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
