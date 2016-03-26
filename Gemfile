@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'database_cleaner'
+
 gem 'devise', '~> 4.0.0.rc2'
 gem 'devise_token_auth'
 
