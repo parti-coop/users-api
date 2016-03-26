@@ -9,6 +9,8 @@ gem 'devise_token_auth'
 
 gem 'factory_girl_rails'
 
+gem 'faraday'
+
 gem 'health_check'
 
 gem 'pg'
