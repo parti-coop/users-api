@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'devise', '~> 4.0.0.rc2'
+gem 'devise_token_auth'
+
 gem 'health_check'
 
 # Use Puma as the app server
