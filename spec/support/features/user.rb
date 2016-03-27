@@ -23,6 +23,7 @@ module Features
         "status": "success",
         "data": {
           "id": "#{last_user.id}",
+          "identifier": "#{last_user.identifier}",
           "provider": "email",
           "uid":"#{last_user.email}",
           "name":null,
