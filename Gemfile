@@ -1,9 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'active_model_serializers', '~> 0.10.0.rc4'
+
 gem 'database_cleaner'
 
 gem 'devise', '~> 4.0.0.rc2'
 gem 'devise_token_auth'
+
+gem 'factory_girl_rails'
 
 gem 'health_check'
 
@@ -29,7 +33,6 @@ end
 
 group :test do
   gem 'email_spec'
-  gem 'factory_girl_rails'
   gem 'json_spec', '~> 1.1.4'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec', '~> 3.5.0.beta2'

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     if Rails.env.test?
       namespace :test do
-        resources :users, only: :index
+        resources :users, only: [:index, :create]
       end
     end
   end

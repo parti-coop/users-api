@@ -3,3 +3,5 @@ RSpec.configure do |config|
     FactoryGirl.lint
   end
 end
+
+require 'test/factories/factory_girl'
