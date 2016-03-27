@@ -25,4 +25,15 @@ class V1::Test::UsersController < ApplicationController
     user.destroy
     render :nothing, status: 204
   end
+
+  def verify_password
+    identifier, password = verify_password_params.values_at :identifier, :password
+    user = User.find_by_identifier! identifier
+    render status: 200, json: user.valid_password?(password)
+  end
+
+  def verify_password_params
+    params.require(:password)
+    params.permit :identifier, :password
+  end
 end
