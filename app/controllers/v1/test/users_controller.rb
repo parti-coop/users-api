@@ -2,7 +2,12 @@ class V1::Test::UsersController < ApplicationController
   include ::Test::Factories::User
 
   def index
-    render :nothing, status: 200
+    users = User.where(index_params)
+    render status: 200, json: users
+  end
+
+  def index_params
+    params.permit :email
   end
 
   def create

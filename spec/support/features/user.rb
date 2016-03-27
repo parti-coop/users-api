@@ -1,6 +1,7 @@
 module Features
   module User
     include Features::Response
+    include ::Test::Factories::User
 
     def user_does_not_exist(email:)
       ::User.where(email: email).destroy_all
@@ -34,8 +35,12 @@ module Features
     end
 
     def created_users_should_be_rendered
+      users_should_be_rendered(::User.createds)
+    end
+
+    def users_should_be_rendered(users)
       response_should_be_200_ok_json
-      users_json = ActiveModel::SerializableResource.new(::User.createds).to_json
+      users_json = ActiveModel::SerializableResource.new(users).to_json
       expect(last_response.body).to be_json_eql(users_json)
     end
 
