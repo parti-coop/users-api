@@ -55,5 +55,10 @@ module Features
         end
       end
     end
+
+    def user_should_be_deleted(attrs)
+      users = ::User.where(attrs)
+      expect(users).to be_empty
+    end
   end
 end

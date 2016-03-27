@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
     if Rails.env.test?
       namespace :test do
-        resources :users, only: [:index, :create]
+        resources :users, only: [:index, :create, :destroy], param: :identifier do
+          post 'verify-password', on: :member, to: 'users#verify_password'
+        end
       end
     end
   end

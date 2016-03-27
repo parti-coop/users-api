@@ -19,4 +19,10 @@ class V1::Test::UsersController < ApplicationController
   def create_params
     params.permit users: [:email, :password]
   end
+
+  def destroy
+    user = User.find_by_identifier! params[:identifier]
+    user.destroy
+    render :nothing, status: 204
+  end
 end
