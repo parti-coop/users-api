@@ -1,5 +1,6 @@
 module Features
   include Features::Client
+  include Features::SignIn
   include Features::SignUp
   include Features::User
   include Features::UserToken

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   namespace :v1 do
     mount_devise_token_auth_for 'User', at: 'users', skip: [:omniauth_callbacks], controllers: {
-      registrations: 'v1/registrations'
+      registrations: 'v1/registrations',
+      sessions: 'v1/sessions'
     }
 
     if Rails.env.test?
