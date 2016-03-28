@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         resources :users, only: [:index, :create, :destroy], param: :identifier do
           post 'verify-password', on: :member, to: 'users#verify_password'
         end
+        post 'database/clean', to: 'database#clean'
       end
     end
   end
