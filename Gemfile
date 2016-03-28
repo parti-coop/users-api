@@ -18,6 +18,8 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma'
 
+gem 'rack-oauth2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 
@@ -40,6 +42,7 @@ group :test do
   gem 'rspec', '~> 3.5.0.beta2'
   gem 'rspec-rails', '~> 3.5.0.beta2'
   gem 'timecop'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -1,7 +1,10 @@
 module Features
   module SignUp
     include Response
-    def sign_up(params)
+    def sign_up(token: nil, **params)
+      if token
+        header 'Authorization', "Bearer #{token}"
+      end
       post v1_user_registration_path params
     end
 

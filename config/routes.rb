@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   health_check_routes
 
   namespace :v1 do
-    mount_devise_token_auth_for 'User', at: 'users', skip: [:omniauth_callbacks]
+    mount_devise_token_auth_for 'User', at: 'users', skip: [:omniauth_callbacks], controllers: {
+      registrations: 'v1/registrations'
+    }
 
     if Rails.env.test?
       namespace :test do

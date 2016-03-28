@@ -4,4 +4,5 @@ module Features
   include Features::User
   include Features::UserToken
   include Features::Test::User
+  include Features::Token
 end

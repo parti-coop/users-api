@@ -5,10 +5,12 @@ module Features
       user.create_new_auth_token
     end
 
-    def verify_user_token(token)
-      header 'access-token', token['access-token']
-      header 'client', token['client']
-      header 'uid', token['uid']
+    def verify_user_token(token: nil, user_token:)
+      header 'Authorization', "Bearer #{token}" if token
+
+      header 'access-token', user_token['access-token']
+      header 'client', user_token['client']
+      header 'uid', user_token['uid']
 
       get v1_users_validate_token_path
     end

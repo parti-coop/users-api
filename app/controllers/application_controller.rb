@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
+  include Concerns::Authentication
 
   rescue_from ActionController::ParameterMissing, :with => :bad_request
 
