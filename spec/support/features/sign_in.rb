@@ -9,31 +9,27 @@ module Features
       post v1_user_session_path, params
     end
 
-    def user_token_should_be_valid(email:, token:)
-      expect(token[:uid]).to eq(email)
-      user = ::User.find_by_email(email)
-      expect(user.valid_token? token[:access_token], token[:client]).to be true
-    end
+    def sign_in_as(user)
+      token = token_is_granted_by_client_credentials users_api_test_client
+      ::User.class_eval do
+        alias_method :orig_valid_password?, :valid_password?
 
-    def user_token_should_not_be_valid(email:, token:)
-      expect(token[:uid]).to eq(email)
-      user = ::User.find_by_email(email)
-      expect(user.valid_token? token[:access_token], token[:client]).to be false
-    end
-
-    def user_token_in_response_should_be_valid(email:)
-      token, client, uid = user_token_in_response(last_response).values_at :access_token, :client, :uid
-      expect(uid).to eq(email)
-      user = ::User.find_by_email(email)
-      user.valid_token? token, client
-    end
-
-    def user_token_in_response(response)
-      response.headers.slice('access-token', 'client', 'uid').with_indifferent_access
-    end
-
-    def user_token_in_response_is_empty
-      expect(user_token_in_response(last_response)).to be_empty
+        def valid_password?(password)
+          encrypted_password == password
+        end
+      end
+      begin
+        sign_in(
+          email: user.email,
+          password: user.encrypted_password,
+          token: token[:access_token]
+        )
+      ensure
+        ::User.class_eval do
+          alias_method :valid_password?, :orig_valid_password?
+          remove_method :orig_valid_password?
+        end
+      end
     end
   end
 end
