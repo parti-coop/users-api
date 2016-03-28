@@ -1,4 +1,4 @@
-require 'test/factories/factory_girl'
+require 'test/factories'
 
 module Test
   module Factories

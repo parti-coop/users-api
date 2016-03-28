@@ -1,5 +1,10 @@
 require 'factory_girl'
 
+module Test
+  module Factories
+  end
+end
+
 FactoryGirl.define do
   sequence(:seq) { |n| n }
 
