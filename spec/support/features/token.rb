@@ -2,6 +2,8 @@ require 'faraday'
 
 module Features
   module Token
+    include PartiUrl
+
     def token_is_granted_by_client_credentials(client_id:, client_secret:)
       conn = auth_api_conn
       conn.basic_auth(client_id, client_secret)
@@ -24,10 +26,6 @@ module Features
 
     def auth_api_conn
       Faraday.new url: auth_api_base_url
-    end
-
-    def auth_api_base_url
-      "#{ENV['AUTH_API_SCHEME']}://#{ENV['AUTH_API_HOST']}:#{ENV['AUTH_API_PORT']}"
     end
   end
 end
