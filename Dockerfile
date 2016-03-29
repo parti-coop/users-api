@@ -1,10 +1,13 @@
 FROM ruby:2.3
+RUN gem update --system 2.4.8
 
 RUN mkdir -p /parti/auth-api 
 WORKDIR /parti/auth-api
 
 COPY Gemfile Gemfile.lock ./
-RUN gem install bundler && bundle install --without development test --deployment --jobs 20 --retry 5
+RUN gem install bundler
+RUN bundle config build.nokogiri --use-system-libraries --disable-clean
+RUN bundle install --without development test --deployment --jobs 20 --retry 5
 
 COPY . ./
 

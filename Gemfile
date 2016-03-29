@@ -13,6 +13,8 @@ gem 'faraday'
 
 gem 'health_check'
 
+gem 'nokogiri', '~> 1.6.8.rc3'
+
 gem 'pg'
 
 # Use Puma as the app server

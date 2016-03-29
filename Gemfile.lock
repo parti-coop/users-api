@@ -100,15 +100,17 @@ GEM
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
-    mini_portile2 (2.0.0)
+    mini_portile2 (2.1.0)
     minitest (5.8.4)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     nio4r (1.2.1)
-    nokogiri (1.6.7.2)
-      mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.8.rc3)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    pkg-config (1.1.7)
     puma (3.2.0)
     rack (2.0.0.alpha)
       json
@@ -146,7 +148,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (11.1.1)
+    rake (11.1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -215,6 +217,7 @@ DEPENDENCIES
   health_check
   json_spec (~> 1.1.4)
   listen (~> 3.0.5)
+  nokogiri (~> 1.6.8.rc3)
   pg
   puma
   rack-oauth2
