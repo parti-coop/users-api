@@ -6,6 +6,8 @@ rvm:
 env:
   global:
     - USERS_API_REPO=partixyz/users-api
+    - secure: opowKE+EGKT26DpJQvFs6k8Y30jTaYuA7WvUPzGhiMND/L6w7r+zzoqjjpZ7SJY9qqdppoDC95O6vP3PMOYzFJh7w3YOFyprXTdWsVjEozQjStgEZlOwT+vc+98XUy5G4BV9GiCOv7e6S11wGkStITDp1XC8kLkHDNqOCMT3OatsNOUZrk7WH3VhGSQxbkxkpvf9vntH/fwTESYCMKwYrRQo58fitL3d0RpEr+C8/jiIdzSD+CTDK4Te5v460uCcwxT3QFd3dUo58G8HuLg45YVSWmXuUr6pqdHyv5jwL+JkJlkM+q4ae965Cjh7pMsv/y9fTyMwnsFGl6sW8KIauA==
+    - secure: 4JS/qIgCDT2wSNjekqDZB1SF7MaBocFxSAu50An8qhxCcixSBwTzx2/Xvs3wcjqroS877G02k+Jiiu38KZSH3gP5xX8LOl38aMLS3jfm1Dmab6F6e9FOH9G85nP3Y1S9+wHEu6FqExuvdkJmT0k/K/+qL5EDWpHyrkkt0s4bjbIpdoNAV45HncwNydvaFoopk9BugSHDeiUwhx5+3IBNHJtCZVwvfxr2Ck0j0gliShI/m0gX1twvVAP7QGoB1hiBglGeoM8PSKogOGJm3/XZ2MgqjRVLrn98WLY3y1DVVidN/U3wDUoQgov1cgb36vDhKl/6Vzwcx3CehzoRnqdFCQ==
 
 before_install:
   - sudo apt-get -y update
