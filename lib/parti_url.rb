@@ -12,7 +12,7 @@ module PartiUrl
   end
 
   def auth_api_host()
-    ENV['AUTH_API_HOST'] || 'localhost'
+    ENV['AUTH_API_HOST'] || 'auth-api'
   end
 
   def auth_api_port()
