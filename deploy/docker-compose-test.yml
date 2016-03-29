@@ -1,0 +1,28 @@
+version: '2'
+services:
+  auth-api:
+    depends_on:
+      - db
+    environment:
+      - DB_USER=postgres
+      - RAILS_ENV=test
+    image: partixyz/auth-api:0.3.0-2-gdefb6a5
+    links:
+      - db:auth-db
+    ports:
+      - 3030:3030
+  db:
+    image: postgres:9.4
+    ports:
+      - 5432:5432
+  users-api:
+    build: ..
+    depends_on:
+      - auth-api
+    environment:
+      - DB_USER=postgres
+      - RAILS_ENV=test
+    links:
+      - db:users-db
+    ports:
+      - 3031:3030
