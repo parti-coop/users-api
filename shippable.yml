@@ -1,0 +1,22 @@
+language: ruby
+
+rvm:
+  - 2.3.0
+
+env:
+  global:
+    - USERS_API_REPO=partixyz/users-api
+
+before_install:
+  - sudo apt-get -y update
+  - sudo apt-get -y install libpq-dev
+  - export APP_VERSION=`git describe  --tags --long || echo ${COMMIT::12}`
+
+after_success:
+  - docker build -t partixyz/users-api:$APP_VERSION .
+  - docker push partixyz/users-api:$APP_VERSION
+
+integrations:
+  hub:
+    - integrationName: partixyz
+      type: docker 
