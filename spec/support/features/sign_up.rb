@@ -1,3 +1,5 @@
+require_relative './response.rb'
+
 module Features
   module SignUp
     include Response
