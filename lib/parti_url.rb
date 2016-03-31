@@ -16,6 +16,17 @@ module PartiUrl
   end
 
   def auth_api_port()
-    ENV['AUTH_API_PORT'] || 3030
+    correct_docker_link_port ENV['AUTH_API_PORT'], 3030
+  end
+
+  def correct_docker_link_port(port, default)
+    case port
+    when /^(\d+)$/
+      $1.to_i
+    when /^tcp:\/\/.+:(\d+)$/
+      $1.to_i
+    else
+      default
+    end
   end
 end
