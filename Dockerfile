@@ -1,7 +1,7 @@
 FROM ruby:2.3
 
-RUN mkdir -p /parti/auth-api 
-WORKDIR /parti/auth-api
+RUN mkdir -p /parti/users-api
+WORKDIR /parti/users-api
 
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler && bundle install --without development test --deployment --jobs 20 --retry 5
