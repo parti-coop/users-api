@@ -16,6 +16,6 @@ SCRIPT_DIR=$( script_dir )
 ROOT_DIR=$( dirname $SCRIPT_DIR )
 
 docker-compose -f ${SCRIPT_DIR}/docker-compose-test.yml up -d db
-sleep 1
+sleep 2
 docker-compose -f ${SCRIPT_DIR}/docker-compose-test.yml run --rm auth-api bin/rails db:setup
 docker-compose -f ${SCRIPT_DIR}/docker-compose-test.yml up -d auth-api
