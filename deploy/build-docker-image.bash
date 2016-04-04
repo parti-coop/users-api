@@ -14,6 +14,6 @@ script_dir() {
 
 SCRIPT_DIR=$( script_dir )
 DOCKER_REPO=partixyz/users-api
-USERS_API_VERSION=${USERS_API_VERSION:-$( git describe --tags --long )}
+APP_VERSION=${APP_VERSION:-$( git describe --tags --long )}
 
-docker build -t ${DOCKER_REPO}:${USERS_API_VERSION} ${SCRIPT_DIR}/..
+docker build -t ${DOCKER_REPO}:${APP_VERSION} ${SCRIPT_DIR}/..
