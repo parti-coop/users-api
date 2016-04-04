@@ -1,0 +1,20 @@
+auth-api:
+  environment:
+    - AUTH_API_EXTERNAL_HOST=external.auth-api
+    - AUTH_API_EXTERNAL_PORT=3030
+    - AUTH_API_CERTIFICATE_BASE64
+    - AUTH_API_ISSUER=http://external.auth-api:3030
+    - AUTH_API_PRIVATE_KEY_BASE64
+    - AUTH_API_PRIVATE_KEY_PASS_PHRASE
+    - AUTHORIZATION_ENDPOINT=http://external.auth-ui
+    - DB_USER=postgres
+    - RAILS_ENV
+  image: partixyz/auth-api:0.3.1-15-ga24f394
+  links:
+    - db:auth-db
+  ports:
+    - 3030:3030
+db:
+  image: postgres:9.4
+  ports:
+    - 5432:5432
