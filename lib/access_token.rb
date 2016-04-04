@@ -1,3 +1,5 @@
+require_relative './parti_url.rb'
+
 class AccessToken
   include PartiUrl
 
