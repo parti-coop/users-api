@@ -7,6 +7,7 @@
 default: &default
   adapter: postgresql
   host: <%= ENV['DB_HOST'] || 'users-db' %>
+  password: <%= ENV['DB_PASSWORD'] %>
   pool: 5
   timeout: 5000
   username: <%= ENV['DB_USER'] || 'postgres' %>
@@ -25,4 +26,3 @@ test:
 production:
   <<: *default
   database: users_prod
-  password: <%= ENV['DB_PASSWORD'] %>
