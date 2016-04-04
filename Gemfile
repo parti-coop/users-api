@@ -5,7 +5,7 @@ gem 'active_model_serializers', '~> 0.10.0.rc4'
 gem 'database_cleaner'
 
 gem 'devise', '~> 4.0.0.rc2'
-gem 'devise_token_auth'
+gem 'devise_token_auth', github:"lynndylanhurley/devise_token_auth", branch: "master"
 
 gem 'factory_girl_rails'
 
