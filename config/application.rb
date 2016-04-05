@@ -31,6 +31,8 @@ module UsersApi
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.logger = Logger.new STDOUT
+
     config.middleware.use Rack::OAuth2::Server::Resource::Bearer do |req|
       access_token = AccessToken.from req.access_token
       req.invalid_token! unless access_token.active?
