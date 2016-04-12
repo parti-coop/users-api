@@ -6,3 +6,4 @@ config/projections.json
 deploy
 spec
 test
+!deploy/docker-cmd.sh
