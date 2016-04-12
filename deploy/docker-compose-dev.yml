@@ -1,0 +1,32 @@
+auth-api:
+  environment:
+    - DB_USER=postgres
+    - RAILS_ENV=test
+    - RAILS_LOG_TO_STDOUT
+  image: partixyz/auth-api:0.3.2-8-g1d602ec
+  links:
+    - db:auth-db
+  ports:
+    - 3030:3030
+db:
+  image: postgres:9.4
+  ports:
+    - 5432:5432
+users-api:
+  build: ..
+  dockerfile: deploy/Dockerfile.dev
+  environment:
+    - DB_USER=postgres
+    - RAILS_ENV=test
+    - RAILS_LOG_TO_STDOUT
+    - USERS_API_EXTERNAL_HOST
+    - USERS_API_EXTERNAL_PORT
+    - USERS_API_TEST_CLIENT_ID
+    - USERS_API_TEST_CLIENT_SECRET
+  links:
+    - auth-api
+    - db:users-db
+  ports:
+    - 3031:3030
+  volumes:
+    - ..:/parti/users-api

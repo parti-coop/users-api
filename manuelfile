@@ -1,0 +1,64 @@
+#! /usr/bin/env bash
+
+DOCKER_COMPOSE_FILE=deploy/docker-compose-dev.yml
+
+auth-api() {
+  run-docker-compose run --rm auth-api "$@"
+}
+
+build() {
+  run-docker-compose build
+}
+
+bundle() {
+  users-api bundle
+}
+
+db() {
+  run-docker-compose run --rm db "$@"
+}
+
+db_setup() {
+  run-docker-compose up -d db
+  auth-api dockerize -wait tcp://auth-db:5432
+  auth-api rails db:setup
+  users-api rails db:setup
+}
+
+deps() {
+  db_setup
+  run-docker-compose up -d auth-api
+}
+
+down() {
+  run-docker-compose down
+}
+
+logs() {
+  run-docker-compose logs
+}
+
+ps() {
+  run-docker-compose ps
+}
+
+rails() {
+  RAILS_LOG_TO_STDOUT= users-api rails "$@"
+}
+
+rspec() {
+  RAILS_LOG_TO_STDOUT= users-api rspec "$@"
+}
+
+run-docker-compose() {
+  docker-compose -f $DOCKER_COMPOSE_FILE "$@"
+}
+
+up() {
+  db_setup
+  run-docker-compose up "$@"
+}
+
+users-api() {
+  run-docker-compose run --rm users-api "$@"
+}
