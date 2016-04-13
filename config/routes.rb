@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       registrations: 'v1/registrations',
       sessions: 'v1/sessions'
     }
+    resources :users, only: [:show], param: :identifier
 
     if Rails.env.test?
       namespace :test do

@@ -7,6 +7,13 @@ module Features
       ::User.where(email: email).destroy_all
     end
 
+    def request_get_user(user:, token: nil)
+      if token
+        header 'Authorization', "Bearer #{token[:access_token]}"
+      end
+      get "/v1/users/#{user.identifier}"
+    end
+
     def user_should_be_created(attrs)
       last_user = ::User.createds.last
       expect(last_user.confirmed?).to eq(attrs[:confirmed]) if attrs[:confirmed]
@@ -37,6 +44,12 @@ module Features
 
     def created_users_should_be_rendered
       users_should_be_rendered(::User.createds)
+    end
+
+    def user_should_be_rendered(user)
+      response_should_be_200_ok_json
+      user_json = ActiveModel::SerializableResource.new(user).to_json
+      expect(last_response.body).to be_json_eql(user_json).excluding('password')
     end
 
     def users_should_be_rendered(users)
