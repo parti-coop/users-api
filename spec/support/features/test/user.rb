@@ -1,9 +1,10 @@
 module Features
   module Test
     module User
-      def create_users_for_test(token: nil, **users)
+      def create_users_for_test(token: nil, users: {})
         add_token_header(token)
-        post v1_test_users_path, { users: users }, { 'Content-Type' => 'application/json' }
+        post v1_test_users_path, { users: users },
+          'Content-Type' => 'application/json'
       end
 
       def delete_user_for_test(token: nil, user_id:)

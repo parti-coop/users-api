@@ -62,9 +62,12 @@ module Features
       if params[:count]
         expect(::User.createds.size).to eq(params[:count])
       end
-      if params[:attrs_set]
-        ::User.createds.zip(params[:attrs_set]).each do |user, attrs|
-          expect(user.attributes.symbolize_keys.slice(*attrs.keys)).to eq(attrs)
+      if params[:users]
+        ::User.createds.zip(params[:users]).each do |user, attrs|
+          expect(user.attributes.symbolize_keys.slice(*attrs.keys)).to eq(attrs.except(:password))
+          if attrs[:password]
+            expect(user.valid_password? attrs[:password]).to be true
+          end
         end
       end
     end
