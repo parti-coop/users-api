@@ -9,7 +9,7 @@ auth-api:
     - AUTHORIZATION_ENDPOINT=http://external.auth-ui
     - DB_USER=postgres
     - RAILS_ENV
-  image: partixyz/auth-api:0.3.1-15-ga24f394
+  image: partixyz/auth-api:0.3.2-8-g1d602ec
   links:
     - db:auth-db
   ports:
