@@ -30,4 +30,13 @@ describe 'create users for test' do
       ]
     )
   end
+
+  it 'responds 422 unprocessable entity with existing email' do
+    user_exists email: 'exist@email.com'
+    create_users_for_test(
+      users: [ { email: 'exist@email.com' } ],
+      token: token[:access_token]
+    )
+    response_should_be_422_unprocessable_entity
+  end
 end
