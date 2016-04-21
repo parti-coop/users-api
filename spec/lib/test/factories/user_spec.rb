@@ -13,20 +13,24 @@ describe Test::Factories::User do
         user = user_exists
         expect(user.confirmation_sent_at).to eq(Time.now)
         expect(user.confirmed_at).to eq(Time.now)
-        expect(user.tokens).to be_blank
         expect(user.created_at).to eq(Time.now)
+        expect(user.email).to be_present
+        expect(user.nickname).to be_present
         expect(user.updated_at).to eq(Time.now)
+        expect(user.tokens).to be_blank
       end
     end
 
     it 'creates unconfirmed' do
       Timecop.freeze do
         user = user_exists confirm: false
-        expect(user.confirmation_token).not_to be_blank
         expect(user.confirmation_sent_at).to eq(Time.now)
+        expect(user.confirmation_token).not_to be_blank
         expect(user.confirmed_at).to be_blank
-        expect(user.tokens).to be_blank
         expect(user.created_at).to eq(Time.now)
+        expect(user.nickname).to be_present
+        expect(user.tokens).to be_blank
+        expect(user.updated_at).to eq(Time.now)
         expect(user.updated_at).to eq(Time.now)
       end
     end
@@ -39,6 +43,11 @@ describe Test::Factories::User do
     it 'creates with email' do
       user = user_exists email: 'any@email.com'
       expect(user.email).to eq('any@email.com')
+    end
+
+    it 'creates with nickname' do
+      user = user_exists nickname: 'any-nickname'
+      expect(user.nickname).to eq('any-nickname')
     end
   end
 

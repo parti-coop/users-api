@@ -18,28 +18,8 @@ module Features
       last_user = ::User.createds.last
       expect(last_user.confirmed?).to eq(attrs[:confirmed]) if attrs[:confirmed]
       expect(last_user.email).to eq(attrs[:email])
+      expect(last_user.nickname).to eq(attrs[:nickname])
       expect(last_user.valid_password? attrs[:password]).to be true
-    end
-
-    def created_user_should_be_rendered
-      response_should_be_200_ok_json
-
-      last_user = ::User.createds.last
-      expect(last_response.body).to be_json_eql(<<-JSON)
-      {
-        "status": "success",
-        "data": {
-          "id": "#{last_user.id}",
-          "identifier": "#{last_user.identifier}",
-          "provider": "email",
-          "uid":"#{last_user.email}",
-          "name":null,
-          "nickname":null,
-          "image":null,
-          "email":"#{last_user.email}"
-        }
-      }
-      JSON
     end
 
     def created_users_should_be_rendered

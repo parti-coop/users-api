@@ -19,10 +19,11 @@ module Features
         "status": "success",
         "data": {
           "id": "#{last_user.id}",
+          "identifier": "#{last_user.identifier}",
           "provider": "email",
           "uid":"#{last_user.email}",
           "name":null,
-          "nickname":null,
+          "nickname":"#{last_user.nickname}",
           "image":null,
           "email":"#{last_user.email}"
         }

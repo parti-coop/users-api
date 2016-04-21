@@ -17,6 +17,7 @@ describe 'Sign up' do
       sign_up(
         confirm_success_url: 'http://redirect.uri',
         email: 'new_user@email.com',
+        nickname: 'new_user_nickname',
         password: 'Passw0rd!',
         token: token[:access_token]
       )
@@ -25,6 +26,7 @@ describe 'Sign up' do
       user_should_be_created(
         confirmed: false,
         email: 'new_user@email.com',
+        nickname: 'new_user_nickname',
         password: 'Passw0rd!'
       )
       confirmation_email_should_be_sent email: 'new_user@email.com'

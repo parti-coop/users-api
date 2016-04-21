@@ -14,6 +14,7 @@ FactoryGirl.define do
       confirm true
     end
     email { "user-#{seq}@email.com" }
+    nickname { "nickname-#{seq}" }
     password 'Passw0rd1!'
     after :create  do |user, evaluator|
       if evaluator.confirm
