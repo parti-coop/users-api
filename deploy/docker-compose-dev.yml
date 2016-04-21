@@ -3,7 +3,7 @@ auth-api:
     - DB_USER=postgres
     - RAILS_ENV=test
     - RAILS_LOG_TO_STDOUT
-  image: partixyz/auth-api:0.3.2-8-g1d602ec
+  image: partixyz/auth-api:0.3.3-14-gd9d655d
   links:
     - db:auth-db
   ports:
