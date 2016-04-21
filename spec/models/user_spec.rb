@@ -6,7 +6,7 @@ describe User do
     expect(user.identifier).to be_nil
   end
 
-  it 'is valid without identifer before creation' do
+  it 'is valid without identifier before creation' do
     user = FactoryGirl.build :user
     expect(user.valid?).to be true
   end
