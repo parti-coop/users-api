@@ -9,7 +9,7 @@ class V1::Test::UsersController < ApplicationController
   end
 
   def index_params
-    params.permit :email
+    params.permit :email, :nickname
   end
 
   def create
